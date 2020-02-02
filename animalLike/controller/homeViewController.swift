@@ -34,23 +34,23 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                 if listener == nil {
                     // listener未登録なら、登録してスナップショットを受信する
                     let postsRef = Firestore.firestore().collection(Const.PostPath).order(by: "date", descending: true)
-                    listener = postsRef.addSnapshotListener() { (querySnapshot, error) in
+                    listener = postsRef.addSnapshotListener() { [weak self] (querySnapshot, error) in
+                        guard let weakSelf = self else { return }
                         if let error = error {
                             print("DEBUG_PRINT: snapshotの取得が失敗しました。 \(error)")
                             return
                         }
                         // 取得したdocumentをもとにPostDataを作成し、kolodaArrayの配列にする。
-                        self.kolodaArray = querySnapshot!.documents.map { document in
+                        weakSelf.kolodaArray = querySnapshot!.documents.map { document in
                             print("DEBUG_PRINT: document取得 \(document.documentID)")
                             let postData = PostData(document: document)
                             return postData
                         }
                         //kolodaArrayの配列から、画像データのみを抽出する
-                        
+                        weakSelf.kolodaView.reloadData()
                     }
             }
         }
-        kolodaView.reloadData()
     }
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
         print(kolodaArray.count)
