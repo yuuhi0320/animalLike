@@ -15,6 +15,7 @@ import FirebaseUI
 class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate {
   
     var kolodaArray: [PostData] = []
+    var postData: PostData?
     // Firestoreのリスナー
     var listener: ListenerRegistration!
     
@@ -46,6 +47,12 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                             let postData = PostData(document: document)
                             return postData
                         }
+                        
+                    //    command //
+//                        let intArray = [100,200,300,400,500]
+//                        let taxedArray = intArray.map { (number) -> Float in
+//                            return Float(number) * 1.01
+//                        }
                         //kolodaArrayの配列から、画像データのみを抽出する
                         weakSelf.kolodaView.reloadData()
                     }
@@ -57,6 +64,7 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return kolodaArray.count
     }
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
+        postData = kolodaArray[index]
         let imageView = UIImageView(frame: koloda.bounds)
         //画像の表示
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(kolodaArray[index].id + ".jpg")
@@ -65,18 +73,17 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         koloda.addSubview(imageView)
         return imageView
     }
-    
-    //
 
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
         switch direction {
         case .left:
+
             print("hidari")
             return
         case .right:
             print("migi")
-           
+            postLike()
             return
         default:
             return
@@ -90,11 +97,33 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     @IBAction func badButton(_ sender: Any) {
+
     }
     
     @IBAction func likeButton(_ sender: Any) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
-        
+        // likesを更新する
+        postLike()
+    }
+    
+    /// いいねを登録する
+    func postLike() {
+        if let myid = Auth.auth().currentUser?.uid {
+            // 更新データを作成する
+            var updateValue: FieldValue
+            guard let postData = postData else { return }
+            if postData.isLiked {
+                // すでにいいねをしている場合は、いいね解除のためmyidを取り除く更新データを作成
+                updateValue = FieldValue.arrayRemove([myid])
+            } else {
+                // 今回新たにいいねを押した場合は、myidを追加する更新データを作成
+                updateValue = FieldValue.arrayUnion([myid])
+            }
+            // likesに更新データを書き込む
+            let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
+            postRef.updateData(["likes": updateValue])
+            
+        }
     }
     
 }
