@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        if let tabvc = self.window?.rootViewController as? UITabBarController  {
+            tabvc.selectedIndex = 2 // 0 が一番左のタブ
+        }        
         return true
     }
 

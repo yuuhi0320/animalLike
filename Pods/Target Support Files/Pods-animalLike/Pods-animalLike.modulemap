@@ -1,0 +1,6 @@
+framework module Pods_animalLike {
+  umbrella header "Pods-animalLike-umbrella.h"
+
+  export *
+  module * { export * }
+}

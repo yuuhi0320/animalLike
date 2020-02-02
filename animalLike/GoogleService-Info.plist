@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>635267497449-pm3o0c71hdkadfofo63a80ehcj69dkpn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.635267497449-pm3o0c71hdkadfofo63a80ehcj69dkpn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDA2PcN5qLRyq6Oss2sw1TLsEAQstefICc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>635267497449</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.co.asahi.kimura.animalLike</string>
+	<key>PROJECT_ID</key>
+	<string>animallike-32054</string>
+	<key>STORAGE_BUCKET</key>
+	<string>animallike-32054.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:635267497449:ios:396b30bea6be3968e25f78</string>
+	<key>DATABASE_URL</key>
+	<string>https://animallike-32054.firebaseio.com</string>
+</dict>
+</plist>
