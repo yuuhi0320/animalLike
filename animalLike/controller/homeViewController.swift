@@ -93,7 +93,6 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     //画像が消え終わったときの処理
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         print("end")
-        
     }
     
     @IBAction func badButton(_ sender: Any) {
