@@ -125,17 +125,11 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         }
     }
     //画像が消え終わったときの処理
-<<<<<<< HEAD
+
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         print("end")
     }
-=======
-//    func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
-//        print("end")
-//        koloda.resetCurrentCardIndex()
-//    }
->>>>>>> d671e86fb24c1c45376b20321686627cb62682aa
-    
+
     @IBAction func badButton(_ sender: Any) {
         kolodaView.swipe(.left)
         print("左")
