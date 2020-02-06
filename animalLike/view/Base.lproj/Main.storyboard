@@ -19,7 +19,7 @@
                                 <rect key="frame" x="92" y="139" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1AA-1W-bWQ">
                                 <rect key="frame" x="92" y="203" width="203" height="34"/>
@@ -110,7 +110,7 @@
                                 <rect key="frame" x="78" y="95" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9T-uL-dm8">
                                 <rect key="frame" x="156" y="288" width="62" height="30"/>
@@ -132,13 +132,13 @@
                                 <rect key="frame" x="78" y="172" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="確認用パスワード" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XLE-u5-zYj">
                                 <rect key="frame" x="78" y="243" width="203" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -354,7 +354,7 @@
         <!--Post View Controller-->
         <scene sceneID="8XF-id-s6Q">
             <objects>
-                <viewController storyboardIdentifier="Post" id="b2P-CB-bNW" customClass="postViewController" customModule="animalLike" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Post" modalPresentationStyle="fullScreen" id="b2P-CB-bNW" customClass="postViewController" customModule="animalLike" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MXj-Az-ite">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -385,6 +385,12 @@
                                     <action selector="cancelButtonAction:" destination="b2P-CB-bNW" eventType="touchUpInside" id="kN2-nl-XPP"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rY4-oR-MkT">
+                                <rect key="frame" x="67" y="332" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="fgC-Cf-fsk"/>
@@ -392,6 +398,7 @@
                     <connections>
                         <outlet property="commentTextField" destination="ndP-iT-eoq" id="EkV-BP-NWS"/>
                         <outlet property="imageView" destination="e7f-Ug-gh8" id="D2H-DG-D0d"/>
+                        <outlet property="nameTextField" destination="rY4-oR-MkT" id="Vhi-jV-Vfd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IEB-1Y-q1W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

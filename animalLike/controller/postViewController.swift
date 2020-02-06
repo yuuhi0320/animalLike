@@ -11,10 +11,13 @@ import SVProgressHUD
 import Firebase
 
 
-class postViewController: UIViewController {
+class postViewController: UIViewController, UITextFieldDelegate {
     
     var image: UIImage!
     
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
     
@@ -22,9 +25,10 @@ class postViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         imageView.image = image
-
+        commentTextField.delegate = self
     }
     @IBAction func postButtonAction(_ sender: Any) {
+        let name = nameTextField.text
         let imageData = image.jpegData(compressionQuality: 0.75)
        //https://qiita.com/1amageek/items/d606dcee9fbcf21eeec6
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
@@ -32,7 +36,13 @@ class postViewController: UIViewController {
         SVProgressHUD.show()
         //オブジェクトのプロパティ。key-value値で保存
         let metaData = StorageMetadata()
-        //https://qiita.com/AkihiroTakamura/items/b93fbe511465f52bffaa
+        if let name = nameTextField.text, let comment = commentTextField.text {
+            if name.isEmpty || comment.isEmpty {
+                print("nameかcommentが入力されていません")
+                SVProgressHUD.showError(withStatus: "nameかcommentが入力されていません")
+            }
+        }
+    //https://qiita.com/AkihiroTakamura/items/b93fbe511465f52bffaa
         metaData.contentType = "image/jpeg"
         imageRef.putData(imageData!, metadata: metaData) { (metaData, error) in
             if let error = error {
@@ -45,9 +55,10 @@ class postViewController: UIViewController {
         }
             let name = Auth.auth().currentUser?.displayName
             let postDic = [
-            "name": name,
+                "name": self.nameTextField.text,
             "caption": self.commentTextField.text,
             "date": FieldValue.serverTimestamp() ] as [String: Any]
+            
             
             //setData > firebaseにデータを保存
             postRef.setData(postDic)
@@ -57,8 +68,15 @@ class postViewController: UIViewController {
         }
     }
     @IBAction func cancelButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        nameTextField.resignFirstResponder()
+        commentTextField.resignFirstResponder()
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
     
 }

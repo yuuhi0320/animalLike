@@ -11,7 +11,6 @@ import Koloda
 import Firebase
 import FirebaseUI
 
-
 class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate {
   
     var kolodaArray: [PostData] = []
@@ -80,13 +79,6 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                             let postData = PostData(document: document)
                             return postData
                         }
-                        
-                    //    command //
-//                        let intArray = [100,200,300,400,500]
-//                        let taxedArray = intArray.map { (number) -> Float in
-//                            return Float(number) * 1.01
-//                        }
-                    
                         weakSelf.kolodaView.reloadData()
                     }
             }
@@ -98,7 +90,7 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         return kolodaArray.count
     }
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        postData = kolodaArray[index]
+        //postData = kolodaArray[index]
         let imageView = UIImageView(frame: koloda.bounds)
         //画像の表示
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(kolodaArray[index].id + ".jpg")
@@ -110,10 +102,11 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
 
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        postData = kolodaArray[index]
         switch direction {
         case .left:
-
             print("hidari：likeのカウントを取らない")
+            postBad()
             return
         case .right:
             print("migi：likeのカウントする")
@@ -138,11 +131,13 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     @IBAction func likeButton(_ sender: Any) {
         print("DEBUG_PRINT: likeボタンがタップされました。")
         // likesを更新する
-        postLike()
         kolodaView.swipe(.right)
         print("右")
     }
     
+    func kolodaSpeedThatCardShouldDrag(_ koloda: KolodaView) -> DragSpeed {
+        return .default
+    }
     /// いいねを登録する
     func postLike() {
         if let myid = Auth.auth().currentUser?.uid {
@@ -150,16 +145,21 @@ class homeViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             var updateValue: FieldValue
             guard let postData = postData else { return }
             if postData.isLiked {
-                // すでにいいねをしている場合は、いいね解除のためmyidを取り除く更新データを作成
+                // すでにいいねをしている場合は、一度いいねを解除し、いいねを追加する。myidを取り除く更新データを作成
                 updateValue = FieldValue.arrayRemove([myid])
+                updateValue = FieldValue.arrayUnion([myid])
+                print("既にいいねしている。")
             } else {
                 // 今回新たにいいねを押した場合は、myidを追加する更新データを作成
                 updateValue = FieldValue.arrayUnion([myid])
+                print("新たに良いね。")
             }
             // likesに更新データを書き込む
             let postRef = Firestore.firestore().collection(Const.PostPath).document(postData.id)
             postRef.updateData(["likes": updateValue])
         }
     }
-    
+    //実装未定
+    func postBad(){
+    }
 }
