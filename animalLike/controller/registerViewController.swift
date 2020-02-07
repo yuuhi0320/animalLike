@@ -16,13 +16,13 @@ class registerViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPassweordTextField: UITextField!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         userNameTextField.delegate = self
         addressTextField.delegate = self
         passwordTextField.delegate = self
         confirmPassweordTextField.delegate = self
-        
-        super.viewDidLoad()
     }
+    
     @IBAction func registerButton(_ sender: Any) {
                if let userName = userNameTextField.text,
                    let address = addressTextField.text,

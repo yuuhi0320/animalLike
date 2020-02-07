@@ -12,6 +12,9 @@ class cameraViewController: UIViewController, UIImagePickerControllerDelegate, U
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
+  
 
+        
 }

@@ -11,68 +11,105 @@ import CLImageEditor
 
 class cmaraAndLibraryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITabBarDelegate, CLImageEditorDelegate {
     
-    @IBOutlet weak var tabBar: UITabBar!
-    @IBOutlet weak var cameraItem: UITabBarItem!
-    @IBOutlet weak var libraryItem: UITabBarItem!
+//    @IBOutlet weak var tabBar: UITabBar!
+  //  @IBOutlet weak var cameraItem: UITabBarItem!
+    //@IBOutlet weak var libraryItem: UITabBarItem!
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.delegate = self
+//        tabBar.delegate = self
     }
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 1:
-            print("1")
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                let pickerController = UIImagePickerController()
-                pickerController.delegate = self
-                pickerController.sourceType = .camera
-                self.present(pickerController, animated: true, completion: nil)
-            }
-            
-        case 2:
-            print("2")
-            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                let pickerController = UIImagePickerController()
-                pickerController.delegate = self
-                pickerController.sourceType = .photoLibrary
-                self.present(pickerController, animated: true, completion: nil)
-            }
-        default:
-            print("")
-        }
-        }
+//    @IBAction func textButton(_ sender: Any) {
+//
+//        let actionSheet = UIAlertController(title: "", message: "写真を投稿しましょう！", preferredStyle: UIAlertController.Style.alert)
+//        let action1 = UIAlertAction(title: "カメラで撮影する", style: UIAlertAction.Style.default) { (UIAlertAction) in
+//            self.tappCamera()
+//        }
+//        let action2 = UIAlertAction(title: "ライブラリから選択する", style: UIAlertAction.Style.default) { (UIAlertAction) in
+//            self.tappLibrary()
+//        }
+//        let action3 = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.default) { (UIAlertAction) in
+//            print("cancel")
+//        }
+//        actionSheet.addAction(action1)
+//        actionSheet.addAction(action2)
+//        actionSheet.addAction(action3)
+//        present(actionSheet, animated: true, completion: nil)
+//    }
+//
+//    func tappLibrary(){
+//        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+//            let pickerController = UIImagePickerController()
+//            pickerController.delegate = self
+//            pickerController.sourceType = .photoLibrary
+//            self.present(pickerController, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func tappCamera(){
+//        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                       let pickerController = UIImagePickerController()
+//                       pickerController.delegate = self
+//                       pickerController.sourceType = .camera
+//                       self.present(pickerController, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        switch item.tag {
+//        case 1:
+//            print("1")
+//            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+//                let pickerController = UIImagePickerController()
+//                pickerController.delegate = self
+//                pickerController.sourceType = .camera
+//                self.present(pickerController, animated: true, completion: nil)
+//            }
+//            
+//        case 2:
+//            print("2")
+//            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+//                let pickerController = UIImagePickerController()
+//                pickerController.delegate = self
+//                pickerController.sourceType = .photoLibrary
+//                self.present(pickerController, animated: true, completion: nil)
+//            }
+//        default:
+//            print("")
+//        }
+//        }
 
     //写真及びライブラリ選択時に呼ぶメソッド
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if info[.originalImage] != nil {
-            let image = info[.originalImage] as! UIImage
-            print("後で加工する")
-            //CLImageEditorにimageを渡して、加工画面を起動する
-            let editor = CLImageEditor(image: image)
-            editor!.delegate = self
-            picker.present(editor!, animated: true, completion: nil)
-        }
-    }
-
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-       }
-    
-    //climageeditarで画像加工
-    func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
-        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! postViewController
-        postViewController.image = image!
-        editor.present(postViewController, animated: true, completion: nil)
-    }
-    //climageeditorキャンセル時
-    func imageEditorDidCancel(_ editor: CLImageEditor!) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
-    }
-    
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        if info[.originalImage] != nil {
+//            let image = info[.originalImage] as! UIImage
+//            print("後で加工する")
+//            //CLImageEditorにimageを渡して、加工画面を起動する
+//            let editor = CLImageEditor(image: image)
+//            editor!.delegate = self
+//            picker.present(editor!, animated: true, completion: nil)
+//        }
+//    }
+//
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+//    }
+//
+//    @IBAction func backButton(_ sender: Any) {
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+//       }
+//
+//    //climageeditarで画像加工
+//    func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
+//        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! postViewController
+//        postViewController.image = image!
+//        editor.present(postViewController, animated: true, completion: nil)
+//    }
+//
+//    //climageeditorキャンセル時
+//    func imageEditorDidCancel(_ editor: CLImageEditor!) {
+//        self.presentingViewController?.dismiss(animated: true, completion: nil)
+//    }
+//
 }

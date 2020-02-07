@@ -182,6 +182,7 @@ PODS:
     - CLImageEditor/Core
   - CLImageEditor/TextTool (0.2.4):
     - CLImageEditor/Core
+  - ESTabBarController (0.2)
   - Firebase (6.13.0):
     - Firebase/Core (= 6.13.0)
   - Firebase/Analytics (6.13.0):
@@ -313,6 +314,7 @@ PODS:
 
 DEPENDENCIES:
   - CLImageEditor/AllTools
+  - ESTabBarController
   - Firebase
   - Firebase/Analytics
   - Firebase/Auth
@@ -327,6 +329,7 @@ SPEC REPOS:
     - abseil
     - BoringSSL-GRPC
     - CLImageEditor
+    - ESTabBarController
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -356,6 +359,7 @@ SPEC CHECKSUMS:
   abseil: 18063d773f5366ff8736a050fe035a28f635fd27
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CLImageEditor: dc3e5358f641368da3a76fc1c744a4c2ceb270ad
+  ESTabBarController: e82ac0b135bec16fb646ac1da4ac8953fcd927da
   Firebase: 458d109512200d1aca2e1b9b6cf7d68a869a4a46
   FirebaseAnalytics: 45f36d9c429fc91d206283900ab75390cd05ee8a
   FirebaseAuth: 7d0f84873926f6648bbd1391a318dfb1a26b5e4f
@@ -381,6 +385,6 @@ SPEC CHECKSUMS:
   SDWebImage: 7137d57385fb632129838c1e6ab9528a22c666cc
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 930ff95e2d119aeadf557f375453a9831e1fa18f
+PODFILE CHECKSUM: 8cc17487127e71297a46e8b62f374603513f9d41
 
 COCOAPODS: 1.8.4
