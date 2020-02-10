@@ -30,6 +30,8 @@
 		5A8167A423E185A100729FB4 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8167A323E185A100729FB4 /* profileViewController.swift */; };
 		5A8167A623E300AF00729FB4 /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8167A523E300AF00729FB4 /* postViewController.swift */; };
 		5A8167A823E3125000729FB4 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8167A723E3125000729FB4 /* Const.swift */; };
+		5AA41BBC23EEBB0C0085A1C3 /* RankingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA41BBA23EEBB0C0085A1C3 /* RankingCollectionViewCell.swift */; };
+		5AA41BBD23EEBB0C0085A1C3 /* RankingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA41BBB23EEBB0C0085A1C3 /* RankingCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		5A8167A323E185A100729FB4 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		5A8167A523E300AF00729FB4 /* postViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		5A8167A723E3125000729FB4 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		5AA41BBA23EEBB0C0085A1C3 /* RankingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCollectionViewCell.swift; sourceTree = "<group>"; };
+		5AA41BBB23EEBB0C0085A1C3 /* RankingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingCollectionViewCell.xib; sourceTree = "<group>"; };
 		60B6F481F9FA1EB658DBB5D1 /* Pods-animalLike.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animalLike.release.xcconfig"; path = "Target Support Files/Pods-animalLike/Pods-animalLike.release.xcconfig"; sourceTree = "<group>"; };
 		B60EFC6E47BB651A968E79C2 /* Pods_animalLike.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_animalLike.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD9F99467A887543C55CE211 /* Pods-animalLike.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-animalLike.debug.xcconfig"; path = "Target Support Files/Pods-animalLike/Pods-animalLike.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +143,9 @@
 			children = (
 				5A17E04923DC0FB400681AE5 /* Main.storyboard */,
 				5A6389BF23DDB8FD00DEBC80 /* rankingTableViewCell.xib */,
+				5A6389BE23DDB8FD00DEBC80 /* rankingTableViewCell.swift */,
+				5AA41BBB23EEBB0C0085A1C3 /* RankingCollectionViewCell.xib */,
+				5AA41BBA23EEBB0C0085A1C3 /* RankingCollectionViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -147,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				5A6389B623DD5CDF00DEBC80 /* rankingViewController.swift */,
-				5A6389BE23DDB8FD00DEBC80 /* rankingTableViewCell.swift */,
 				5A48A0D423E13F8A007CAF46 /* WeekViewController.swift */,
 				5A48A0D623E13FB7007CAF46 /* AllViewController.swift */,
 				5A6389C223DE8D5600DEBC80 /* tabBarViewController.swift */,
@@ -226,6 +232,7 @@
 				5A17E05023DC0FB700681AE5 /* LaunchScreen.storyboard in Resources */,
 				5A17E04D23DC0FB700681AE5 /* Assets.xcassets in Resources */,
 				5A6389C123DDB8FD00DEBC80 /* rankingTableViewCell.xib in Resources */,
+				5AA41BBD23EEBB0C0085A1C3 /* RankingCollectionViewCell.xib in Resources */,
 				5A17E04B23DC0FB400681AE5 /* Main.storyboard in Resources */,
 				5A48A0D323DFF87F007CAF46 /* GoogleService-Info.plist in Resources */,
 			);
@@ -297,6 +304,7 @@
 				5A8167A823E3125000729FB4 /* Const.swift in Sources */,
 				5A48A0D523E13F8A007CAF46 /* WeekViewController.swift in Sources */,
 				5A6389B323DD5CAC00DEBC80 /* homeViewController.swift in Sources */,
+				5AA41BBC23EEBB0C0085A1C3 /* RankingCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

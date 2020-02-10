@@ -16,6 +16,6 @@ pod 'Firebase/Storage'
 pod 'FirebaseUI/Storage'
 pod 'SVProgressHUD'
 pod 'CLImageEditor/AllTools'
-pod 'ESTabBarController'
+pod 'HMSegmentedControl'
 
 end

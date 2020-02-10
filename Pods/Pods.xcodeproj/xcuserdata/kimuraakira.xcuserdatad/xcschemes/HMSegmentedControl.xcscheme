@@ -14,9 +14,9 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D3CE2EBB6B866F67E8B580DB6B4D94D"
-               BuildableName = "ESTabBarController.framework"
-               BlueprintName = "ESTabBarController"
+               BlueprintIdentifier = "B4CEB0284B4209C3EB1D2921056254BE"
+               BuildableName = "HMSegmentedControl.framework"
+               BlueprintName = "HMSegmentedControl"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

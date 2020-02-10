@@ -12,12 +12,11 @@ import Firebase
 import CLImageEditor
 
 
+
 class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
     
     var image: UIImage!
-    let tapGesture = UIGestureRecognizer(target: self, action: #selector(tapped(_:)))
 
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
@@ -27,12 +26,13 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
         imageView.backgroundColor = .blue
         imageView.layer.cornerRadius = 10
         commentTextField.delegate = self
-        tapGesture.delegate = self
+        imageView.bringSubviewToFront(self.view)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        self.imageView.isUserInteractionEnabled = true
         self.imageView.addGestureRecognizer(tapGesture)
     }
 
-    @objc func tapped(_ sender: UITapGestureRecognizer ){
-        if sender.state == .ended {
+    @objc func tapped(){
             let actionSheet = UIAlertController(title: "", message: "写真を投稿しましょう！", preferredStyle: UIAlertController.Style.alert)
             let action1 = UIAlertAction(title: "カメラで撮影する", style: UIAlertAction.Style.default) { (UIAlertAction) in
                 self.tappCamera()
@@ -47,25 +47,7 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
             actionSheet.addAction(action2)
             actionSheet.addAction(action3)
             present(actionSheet, animated: true, completion: nil)
-        }
     }
-        
-    @IBAction func butoon(_ sender: Any) {
-            let actionSheet = UIAlertController(title: "", message: "写真を投稿しましょう！", preferredStyle: UIAlertController.Style.alert)
-            let action1 = UIAlertAction(title: "カメラで撮影する", style: UIAlertAction.Style.default) { (UIAlertAction) in
-                self.tappCamera()
-            }
-            let action2 = UIAlertAction(title: "ライブラリから選択する", style: UIAlertAction.Style.default) { (UIAlertAction) in
-                self.tappLibrary()
-            }
-            let action3 = UIAlertAction(title: "キャンセル", style: UIAlertAction.Style.default) { (UIAlertAction) in
-                print("cancel")
-            }
-            actionSheet.addAction(action1)
-            actionSheet.addAction(action2)
-            actionSheet.addAction(action3)
-            present(actionSheet, animated: true, completion: nil)
-        }
     
     
         func tappLibrary(){
@@ -156,9 +138,7 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
         }
     }
     
-    @IBAction func cancelButtonAction(_ sender: Any) {
-        UIApplication.shared.windows.first{ $0.isKeyWindow}?.rootViewController?.dismiss(animated: true, completion: nil)
-    }
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         nameTextField.resignFirstResponder()
         commentTextField.resignFirstResponder()
