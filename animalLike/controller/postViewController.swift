@@ -11,15 +11,14 @@ import SVProgressHUD
 import Firebase
 import CLImageEditor
 
-
-
 class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLImageEditorDelegate {
     
     var image: UIImage!
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,10 +84,11 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
     }
     //climageeditarで画像加工
     func imageEditor(_ editor: CLImageEditor!, didFinishEditingWith image: UIImage!) {
-        let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! postViewController
+        //let postViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post") as! postViewController
         imageView.image = image
         imageView.contentMode = .scaleToFill
         dismiss(animated: true, completion: nil)
+        //UserDefaults.standard.set(image, forKey: "image")
         
     }
     //climageeditorキャンセル時
@@ -97,9 +97,13 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
     }
 
     @IBAction func postButtonAction(_ sender: Any) {
-       // let name = nameTextField.text
+        print(image as Any)
+        //if UserDefaults.standard.object(forKey: "image") != nil {
+          //  image = (UserDefaults.standard.object(forKey: "image") as! UIImage)
+        //}
+        image = imageView.image
         let imageData = image.jpegData(compressionQuality: 0.75)
-       //https://qiita.com/1amageek/items/d606dcee9fbcf21eeec6
+       
         let postRef = Firestore.firestore().collection(Const.PostPath).document()
         let imageRef = Storage.storage().reference().child(Const.ImagePath).child(postRef.documentID + ".jpg")
         SVProgressHUD.show()
@@ -133,8 +137,8 @@ class postViewController: UIViewController, UITextFieldDelegate,UIGestureRecogni
             //setData > firebaseにデータを保存
             postRef.setData(postDic)
             SVProgressHUD.showSuccess(withStatus: "投稿に成功しました")
-            UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
-            self.tabBarController?.selectedIndex = 2
+            //UIApplication.shared.windows.first { $0.isKeyWindow }?.rootViewController?.dismiss(animated: true, completion: nil)
+            self.tabBarController?.selectedIndex = 0
         }
     }
     
