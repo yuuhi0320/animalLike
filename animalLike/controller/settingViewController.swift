@@ -36,7 +36,8 @@ class settingViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch contentsArray[indexPath.row] {
         case "プロフィール" :
             let profileViewController = self.storyboard?.instantiateViewController(withIdentifier: "Profile") as! profileViewController
-            present(profileViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(profileViewController, animated: true)
+//            present(profileViewController, animated: true, completion: nil)
         case "ログアウト":
             try?Auth.auth().signOut()
             UIApplication.shared.windows.first{$0.isKeyWindow}?.rootViewController?.dismiss(animated: true, completion: nil)

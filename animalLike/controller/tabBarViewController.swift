@@ -29,7 +29,7 @@ class tabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController is cameraViewController {
-            let cameraAndLibraryViewController = self.storyboard?.instantiateViewController(withIdentifier: "CameraAndLibrary")
+            let cameraAndLibraryViewController = self.storyboard?.instantiateViewController(withIdentifier: "Post")
             self.present(cameraAndLibraryViewController!, animated: true, completion: nil)
             
         }

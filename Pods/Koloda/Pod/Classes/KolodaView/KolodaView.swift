@@ -10,8 +10,8 @@ import UIKit
 import pop
 
 // Default values
-private let defaultCountOfVisibleCards = 3
-private let defaultBackgroundCardsTopMargin: CGFloat = 4.0
+private let defaultCountOfVisibleCards = 3//初期値3
+private let defaultBackgroundCardsTopMargin: CGFloat = 1.0
 private let defaultBackgroundCardsScalePercent: CGFloat = 0.95
 private let defaultBackgroundCardsLeftMargin: CGFloat = 8.0
 private let defaultBackgroundCardFrameAnimationDuration: TimeInterval = 0.2
